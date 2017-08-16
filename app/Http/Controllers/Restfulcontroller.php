@@ -21,8 +21,9 @@ class Restfulcontroller extends Controller
     public function postinfo(Request $request)
     {
         $newinfo  = new info();
-        $newinfo->title = $request->input('title');
-        $newinfo->info = $request->input('info');
+        $newinfo->fullname = $request->input('fullname');
+        $newinfo->email = $request->input('email');
+        $newinfo->detail = $request->input('detail');
         $newinfo->save();
         return response()->json(['newinfo' => $newinfo],201);
     }
@@ -32,8 +33,9 @@ class Restfulcontroller extends Controller
         if(!$update){
             return response()->json(['message' => 'Document not found'],404);   
         }
-        $update->title = $request->input('title');
-        $update->info = $request->input('info');
+        $update->fullname = $request->input('fullname');
+        $update->email = $request->input('email');
+        $update->detail = $request->input('detail');
         $update->save();
         return response()->json(['updateinfo' => $update],200);
         
